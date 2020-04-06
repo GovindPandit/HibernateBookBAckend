@@ -10,4 +10,5 @@ public interface UserService
 	public boolean deleteUser(int userid);
 	public boolean updateUser(User user);
 	public List<User> displayUsers();
+	public User displayUserByUsername(String username);
 }

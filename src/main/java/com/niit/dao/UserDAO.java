@@ -10,4 +10,5 @@ public interface UserDAO
 	public boolean deleteUser(int userid);
 	public boolean updateUser(User user);
 	public List<User> displayUsers();
+	public User displayUserByName(String username);
 }

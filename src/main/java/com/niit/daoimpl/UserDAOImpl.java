@@ -2,6 +2,7 @@ package com.niit.daoimpl;
 
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -44,6 +45,13 @@ public class UserDAOImpl implements UserDAO
 	public List<User> displayUsers() 
 	{
 		return sessionFactory.getCurrentSession().createQuery("from com.niit.model.User").getResultList();
+	}
+
+	public User displayUserByName(String username) 
+	{
+		Query query=sessionFactory.getCurrentSession().createQuery("from com.niit.model.User where username= :username");
+		query.setParameter("username", username);
+		return (User)query.getResultList().get(0);
 	}
 
 }

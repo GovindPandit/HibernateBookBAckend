@@ -3,6 +3,7 @@ package com.niit.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.niit.dao.UserDAO;
@@ -17,10 +18,12 @@ public class UserServiceImpl implements UserService
 	@Autowired
 	UserDAO userDAO;
 	
-	public boolean addUser(User user) 
+	public boolean addUser(User user)
 	{
 		//performing validation
-		
+		user.setAuthority("user");
+		user.setStatus(true);
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		userDAO.addUser(user);
 		Email email=new Email(user.getEmail(), "Spring Demo", "Welcome to the email api");
 		email.sendEmail();
@@ -43,6 +46,11 @@ public class UserServiceImpl implements UserService
 	public List<User> displayUsers() 
 	{
 		return userDAO.displayUsers();
+	}
+
+	public User displayUserByUsername(String username) 
+	{
+		return userDAO.displayUserByName(username);
 	}
 	
 }

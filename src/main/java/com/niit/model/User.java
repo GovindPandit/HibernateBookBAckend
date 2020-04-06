@@ -17,7 +17,22 @@ public class User
 	@Column
 	private String username;
 	private String email;
+	private String authority;
+	private boolean status;
 	
+	
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	public String getEmail() {
 		return email;
 	}
