@@ -17,7 +17,15 @@ public class Book
 	@Column
 	private String bookname;
 	private String booklink;
+	private String bookimage;
 	
+	
+	public String getBookimage() {
+		return bookimage;
+	}
+	public void setBookimage(String bookimage) {
+		this.bookimage = bookimage;
+	}
 	@Column(length=9999999)
 	private String description;
 	private float price;
