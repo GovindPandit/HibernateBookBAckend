@@ -42,4 +42,22 @@ public class BookServiceImpl implements BookService
 		return bookDAO.displayByBookId(bookid);
 	}
 
+	@Override
+	public List<Book> displayBooksHighToLow()
+	{
+		return bookDAO.displayBooksHighToLow();
+	}
+
+	@Override
+	public List<Book> displayBooksLowToHigh() 
+	{
+		return bookDAO.displayBooksLowToHigh();
+	}
+
+	@Override
+	public List<Book> search(String bookname) 
+	{
+		return bookDAO.search(bookname);
+	}
+
 }

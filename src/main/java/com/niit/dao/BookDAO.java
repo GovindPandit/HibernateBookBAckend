@@ -10,5 +10,10 @@ public interface BookDAO
 	public boolean deleteBook(int bookid);
 	public boolean updateBook(Book book);
 	public List<Book> displayBooks();
+	public List<Book> displayBooksHighToLow();
+	public List<Book> displayBooksLowToHigh();
+	public List<Book> search(String bookname);
 	public Book displayByBookId(int bookid);
+	
 }
+

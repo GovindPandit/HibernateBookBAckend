@@ -51,5 +51,24 @@ public class BookDAOImpl implements BookDAO
 		query.setParameter("bookid", bookid);
 		return (Book)query.getResultList().get(0);
 	}
+
+	@Override
+	public List<Book> displayBooksHighToLow() 
+	{
+		return sessionFactory.getCurrentSession().createQuery("from com.niit.model.Book order by price desc").getResultList();
+	}
+
+	@Override
+	public List<Book> displayBooksLowToHigh() 
+	{
+		return sessionFactory.getCurrentSession().createQuery("from com.niit.model.Book order by price asc").getResultList();
+	}
+
+	@Override
+	public List<Book> search(String bookname)
+	{
+		Query query=sessionFactory.getCurrentSession().createQuery("from com.niit.model.Book where bookname like :bn");
+		return query.setParameter("bn", "%"+bookname+"%").getResultList();
+	}
 	
 }
